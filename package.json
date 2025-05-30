@@ -21,15 +21,12 @@
     "lint-staged": "^15.2.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{json,md}": [
-      "prettier --write"
-    ],
     "*.py": [
-      "black",
+      "black --fast",
       "isort"
     ]
   }
