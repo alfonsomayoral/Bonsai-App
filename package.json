@@ -1,0 +1,36 @@
+{
+  "name": "bonsai",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Bonsai – mobile MVP (meals + workouts tracker)",
+  "packageManager": "pnpm@8.15.0",
+  "scripts": {
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "format": "pnpm -r format",
+    "prepare": "husky install",
+    "dev": "pnpm -r dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ],
+    "*.py": [
+      "black",
+      "isort"
+    ]
+  }
+}

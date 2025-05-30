@@ -1,0 +1,145 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# BONSAI APP Project Rules
+
+## Technology Stack
+
+### Backend
+- **Language**: Python 3.12
+- **Framework**: FastAPI
+- **Database**: PostgreSQL
+- **ORM**: SQLAlchemy 2.0
+- **Authentication**: FastAPI JWT Auth
+- **User Management**: FastAPI Users
+- **Email**: FastAPI Mail
+- **Caching**: FastAPI Cache
+- **Rate Limiting**: FastAPI Limiter
+- **Pagination**: FastAPI Pagination
+- **Dependency Management**: Poetry
+- **Database Migrations**: Alembic
+
+### Frontend
+- **Language**: TypeScript
+- **Framework**: React
+- **UI Libraries**: 
+  - Tailwind CSS
+  - Shadcn UI
+- **Build Tool**: Vite
+- **Testing**: Jest + Detox
+- **State Management**: React Query
+
+## Project Structure
+
+### Backend Structure
+```
+backend/
+├── src/
+│   ├── api/
+│   │   ├── routes/
+│   │   ├── dependencies/
+│   │   └── middleware/
+│   ├── core/
+│   │   ├── config/
+│   │   └── security/
+│   ├── db/
+│   │   ├── models/
+│   │   └── repositories/
+│   ├── schemas/
+│   └── services/
+├── tests/
+├── alembic/
+└── poetry.lock
+```
+
+### Frontend Structure
+```
+frontend/
+├── src/
+│   ├── components/
+│   ├── hooks/
+│   ├── pages/
+│   ├── services/
+│   ├── styles/
+│   └── utils/
+├── tests/
+└── package.json
+```
+
+## Coding Standards
+
+### Python/FastAPI Standards
+1. **Type Hints**: Use Python type hints for all function signatures
+2. **Pydantic Models**: Use for input validation and response models
+3. **Naming Conventions**:
+   - Use lowercase with underscores for files and functions
+   - Use PascalCase for classes
+   - Use descriptive names with auxiliary verbs (e.g., `is_active`, `has_permission`)
+4. **Code Style**:
+   - Follow PEP 8
+   - Use docstrings for all functions and classes
+   - Keep functions small and focused
+   - Use async/await for I/O operations
+5. **Error Handling**:
+   - Use custom exception classes
+   - Implement proper logging
+   - Use try-except blocks appropriately
+
+### TypeScript/React Standards
+1. **TypeScript Usage**:
+   - Use interfaces over types
+   - Avoid enums; use const objects instead
+   - Use proper type definitions for all components
+2. **Component Structure**:
+   - Use functional components
+   - Implement proper TypeScript interfaces
+   - Keep components small and focused
+3. **State Management**:
+   - Use React Query for server state
+   - Minimize local state usage
+   - Use proper loading and error states
+4. **Performance**:
+   - Implement code splitting
+   - Use proper memoization
+   - Optimize images and assets
+
+## Testing Requirements
+1. **Backend Tests**:
+   - Unit tests for all business logic
+   - Integration tests for API endpoints
+   - Database migration tests
+2. **Frontend Tests**:
+   - Unit tests for components
+   - Integration tests for pages
+   - E2E tests with Detox
+
+## Development Workflow
+1. Use Git for version control
+2. Follow conventional commits
+3. Use Docker for development and production
+4. Implement CI/CD pipelines
+5. Regular dependency updates
+
+## Security Guidelines
+1. Implement proper authentication and authorization
+2. Use environment variables for sensitive data
+3. Implement rate limiting
+4. Use HTTPS in production
+5. Regular security audits
+
+## Performance Guidelines
+1. Implement caching strategies
+2. Use lazy loading where appropriate
+3. Optimize database queries
+4. Implement proper indexing
+5. Monitor application performance
+
+## Documentation Requirements
+1. API documentation using OpenAPI/Swagger
+2. Code documentation using docstrings
+3. README files for all major components
+4. Setup and deployment instructions
+5. Contributing guidelines
+

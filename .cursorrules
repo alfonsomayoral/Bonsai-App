@@ -1,0 +1,534 @@
+---
+description: .cursorrules for entire project
+alwaysApply: false
+globs:
+  - '**/*'
+---
+
+// ---- Begin rules from project-rules.mdc ----
+
+# BONSAI APP Project Rules
+
+## Technology Stack
+
+### Backend
+- **Language**: Python 3.12
+- **Framework**: FastAPI
+- **Database**: PostgreSQL
+- **ORM**: SQLAlchemy 2.0
+- **Authentication**: FastAPI JWT Auth
+- **User Management**: FastAPI Users
+- **Email**: FastAPI Mail
+- **Caching**: FastAPI Cache
+- **Rate Limiting**: FastAPI Limiter
+- **Pagination**: FastAPI Pagination
+- **Dependency Management**: Poetry
+- **Database Migrations**: Alembic
+
+### Frontend
+- **Language**: TypeScript
+- **Framework**: React
+- **UI Libraries**: 
+  - Tailwind CSS
+  - Shadcn UI
+- **Build Tool**: Vite
+- **Testing**: Jest + Detox
+- **State Management**: React Query
+
+## Project Structure
+
+### Backend Structure
+```
+backend/
+├── src/
+│   ├── api/
+│   │   ├── routes/
+│   │   ├── dependencies/
+│   │   └── middleware/
+│   ├── core/
+│   │   ├── config/
+│   │   └── security/
+│   ├── db/
+│   │   ├── models/
+│   │   └── repositories/
+│   ├── schemas/
+│   └── services/
+├── tests/
+├── alembic/
+└── poetry.lock
+```
+
+### Frontend Structure
+```
+frontend/
+├── src/
+│   ├── components/
+│   ├── hooks/
+│   ├── pages/
+│   ├── services/
+│   ├── styles/
+│   └── utils/
+├── tests/
+└── package.json
+```
+
+## Coding Standards
+
+### Python/FastAPI Standards
+1. **Type Hints**: Use Python type hints for all function signatures
+2. **Pydantic Models**: Use for input validation and response models
+3. **Naming Conventions**:
+   - Use lowercase with underscores for files and functions
+   - Use PascalCase for classes
+   - Use descriptive names with auxiliary verbs (e.g., `is_active`, `has_permission`)
+4. **Code Style**:
+   - Follow PEP 8
+   - Use docstrings for all functions and classes
+   - Keep functions small and focused
+   - Use async/await for I/O operations
+5. **Error Handling**:
+   - Use custom exception classes
+   - Implement proper logging
+   - Use try-except blocks appropriately
+
+### TypeScript/React Standards
+1. **TypeScript Usage**:
+   - Use interfaces over types
+   - Avoid enums; use const objects instead
+   - Use proper type definitions for all components
+2. **Component Structure**:
+   - Use functional components
+   - Implement proper TypeScript interfaces
+   - Keep components small and focused
+3. **State Management**:
+   - Use React Query for server state
+   - Minimize local state usage
+   - Use proper loading and error states
+4. **Performance**:
+   - Implement code splitting
+   - Use proper memoization
+   - Optimize images and assets
+
+## Testing Requirements
+1. **Backend Tests**:
+   - Unit tests for all business logic
+   - Integration tests for API endpoints
+   - Database migration tests
+2. **Frontend Tests**:
+   - Unit tests for components
+   - Integration tests for pages
+   - E2E tests with Detox
+
+## Development Workflow
+1. Use Git for version control
+2. Follow conventional commits
+3. Use Docker for development and production
+4. Implement CI/CD pipelines
+5. Regular dependency updates
+
+## Security Guidelines
+1. Implement proper authentication and authorization
+2. Use environment variables for sensitive data
+3. Implement rate limiting
+4. Use HTTPS in production
+5. Regular security audits
+
+## Performance Guidelines
+1. Implement caching strategies
+2. Use lazy loading where appropriate
+3. Optimize database queries
+4. Implement proper indexing
+5. Monitor application performance
+
+## Documentation Requirements
+1. API documentation using OpenAPI/Swagger
+2. Code documentation using docstrings
+3. README files for all major components
+4. Setup and deployment instructions
+5. Contributing guidelines
+
+// ---- End rules from project-rules.mdc ----
+
+
+// ---- Begin rules from python-312-fastapi-best-practices-cursorrules-prom.mdc ----
+
+Here are some best practices and rules you must follow:
+
+- You use Python 3.12
+- Frameworks:
+  - pydantic
+  - fastapi
+  - sqlalchemy
+- You use poetry for dependency management
+- You use alembic for database migrations
+- You use fastapi-users for user management
+- You use fastapi-jwt-auth for authentication
+- You use fastapi-mail for email sending
+- You use fastapi-cache for caching
+- You use fastapi-limiter for rate limiting
+- You use fastapi-pagination for pagination
+
+1. **Use Meaningful Names**: Choose descriptive variable, function, and class names.
+2. **Follow PEP 8**: Adhere to the Python Enhancement Proposal 8 style guide for formatting.
+3. **Use Docstrings**: Document functions and classes with docstrings to explain their purpose.
+4. **Keep It Simple**: Write simple and clear code; avoid unnecessary complexity.
+5. **Use List Comprehensions**: Prefer list comprehensions for creating lists over traditional loops when appropriate.
+6. **Handle Exceptions**: Use try-except blocks to handle exceptions gracefully.
+7. **Use Virtual Environments**: Isolate project dependencies using virtual environments (e.g., `venv`).
+8. **Write Tests**: Implement unit tests to ensure code reliability.
+9. **Use Type Hints**: Utilize type hints for better code clarity and type checking.
+10. **Avoid Global Variables**: Limit the use of global variables to reduce side effects.
+
+These rules will help you write clean, efficient, and maintainable Python code.
+
+// ---- End rules from python-312-fastapi-best-practices-cursorrules-prom.mdc ----
+
+
+// ---- Begin rules from python-fastapi-scalable-api-cursorrules-prompt-file.mdc ----
+
+You are an expert in **Python, FastAPI, scalable API development, TypeScript, React, Tailwind,** and **Shadcn UI**.
+
+### Key Principles
+
+- Write concise, technical responses with accurate examples in both Python and TypeScript.
+- Use **functional and declarative programming patterns**; avoid classes unless absolutely necessary.
+- Prefer **iteration and modularization** over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., `is_active`, `has_permission`, `isLoading`, `hasError`).
+- Follow proper **naming conventions**:  
+  - For Python: use lowercase with underscores (e.g., `routers/user_routes.py`).  
+  - For TypeScript: use lowercase with dashes for directories (e.g., `components/auth-wizard`).
+
+### Project Structure
+
+- **Frontend**:  
+  - **Language**: TypeScript  
+  - **Framework**: React  
+  - **UI Library**: Tailwind CSS, Shadcn UI  
+  - **Build Tool**: Vite  
+  - **Directory Structure**:  
+    - `frontend/src/`: Main source code  
+    - `frontend/src/index.html`: Main HTML file  
+    - Configuration Files:  
+      - `vite.config.ts`  
+      - `tsconfig.json`  
+      - `tailwind.config.js`  
+      - `postcss.config.js`  
+    - **Docker Files**:  
+      - `Dockerfile`  
+      - `Dockerfile.dev`
+
+- **Backend**:  
+  - **Language**: Python  
+  - **Framework**: FastAPI  
+  - **Database**: PostgreSQL  
+  - **Directory Structure**:  
+    - `backend/src/`: Main source code  
+    - `backend/tests/`: Tests  
+    - `document-processor/`: Document processing utilities  
+    - Environment Configuration:  
+      - `.env` / `.env.example`: Environment variables  
+    - Database Configuration:  
+      - `alembic.ini`  
+      - `ddialog.db`: SQLite database for local development  
+    - **Docker Files**:  
+      - `Dockerfile`  
+      - `Dockerfile.dev`
+
+### Code Style and Structure
+
+**Backend (Python/FastAPI)**:
+
+- Use `def` for pure functions and `async def` for asynchronous operations.
+- **Type Hints**: Use Python type hints for all function signatures. Prefer Pydantic models for input validation.
+- **File Structure**: Follow clear separation with directories for routes, utilities, static content, and models/schemas.
+- **RORO Pattern**: Use the "Receive an Object, Return an Object" pattern.
+- **Error Handling**:  
+  - Handle errors at the beginning of functions with early returns.  
+  - Use guard clauses and avoid deeply nested if statements.  
+  - Implement proper logging and custom error types.
+
+**Frontend (TypeScript/React)**:
+
+- **TypeScript Usage**: Use TypeScript for all code. Prefer interfaces over types. Avoid enums; use maps instead.
+- **Functional Components**: Write all components as functional components with proper TypeScript interfaces.
+- **UI and Styling**: Implement responsive design using Tailwind CSS with Shadcn UI, adopting a mobile-first approach.
+- **Performance**:  
+  - Minimize `use client`, `useEffect`, and `setState` hooks. Favor server-side rendering where possible.  
+  - Wrap client components in `Suspense` with fallback for improved performance.
+
+### Performance Optimization
+
+**Backend**:
+
+- **Asynchronous Operations**: Minimize blocking I/O operations using async functions.
+- **Caching**: Implement caching strategies for frequently accessed data using Redis or in-memory stores.
+- **Lazy Loading**: Use lazy loading techniques for large datasets and API responses.
+
+**Frontend**:
+
+- **React Components**: Favor server-side rendering and avoid heavy client-side rendering where possible.
+- **Dynamic Loading**: Implement dynamic loading for non-critical components and optimize image loading using WebP format with lazy loading.
+
+### Project Conventions
+
+**Backend**:
+
+1. Follow **RESTful API design principles**.
+2. Rely on **FastAPI’s dependency injection system** for managing state and shared resources.
+3. Use **SQLAlchemy 2.0** for ORM features, if applicable.
+4. Ensure **CORS** is properly configured for local development.
+5. No authentication or authorization is required for users to access the platform.
+
+**Frontend**:
+
+1. Optimize **Web Vitals** (LCP, CLS, FID).
+2. Limit `use client` hooks to small, specific components for Web API access.
+3. Use **Docker** for containerization and ensure easy deployment.
+
+### Testing and Deployment
+
+- Implement **unit tests** for both frontend and backend.
+- Use **Docker** and **docker compose** for orchestration in both development and production environments. Avoid using the obsolete `docker-compose` command.
+- Ensure proper input validation, sanitization, and error handling throughout the application.
+
+// ---- End rules from python-fastapi-scalable-api-cursorrules-prompt-file.mdc ----
+
+
+// ---- Begin rules from react-native-expo-cursorrules-prompt-files.mdc ----
+
+// React Native Expo .cursorrules
+
+// React Native Expo best practices
+
+const reactNativeExpoBestPractices = [
+  "Use functional components with hooks",
+  "Utilize Expo SDK features and APIs",
+  "Implement proper navigation using React Navigation",
+  "Use Expo's asset system for images and fonts",
+  "Implement proper error handling and crash reporting",
+  "Utilize Expo's push notification system",
+];
+
+// Folder structure
+
+const folderStructure = `
+assets/
+src/
+  components/
+  screens/
+  navigation/
+  hooks/
+  utils/
+App.js
+app.json
+`;
+
+// Additional instructions
+
+const additionalInstructions = `
+1. Use TypeScript for type safety
+2. Implement proper styling using StyleSheet
+3. Utilize Expo's vector icons
+4. Use Expo's secure store for sensitive data
+5. Implement proper offline support
+6. Follow React Native best practices for performance
+7. Use Expo's OTA updates for quick deployments
+
+`;
+
+// ---- End rules from react-native-expo-cursorrules-prompt-files.mdc ----
+
+
+// ---- Begin rules from react-native-expo-router-typescript-windows-cursorrules-prompt-file.mdc ----
+
+// React Native Expo .cursorrules
+
+// React Native Expo Best Practices
+
+const reactNativeExpoBestPractices = [
+  "Use functional components with hooks.",
+  "Leverage Expo SDK features and APIs.",
+  "Implement navigation using Expo Router.",
+  "Manage assets with Expo's asset system for images and fonts.",
+  "Ensure robust error handling and crash reporting.",
+  "Utilize Expo's push notification system.",
+  "Adopt TypeScript for type safety.",
+  "Apply consistent styling using StyleSheet.",
+  "Incorporate Expo's vector icons.",
+  "Secure sensitive data with Expo's SecureStore.",
+  "Implement proper offline support.",
+  "Optimize performance following React Native best practices.",
+  "Deploy updates using Expo's OTA mechanism.",
+  "Style components using NativeWind.",
+];
+
+// Folder Structure
+
+const folderStructure = `
+assets/
+src/
+  components/
+  screens/
+  navigation/
+  hooks/
+  utils/
+app/
+  _layout.tsx
+  index.tsx
+App.js
+app.json
+`;
+
+// Package Version Compatibility Notes
+
+const packageCompatibilityNotes = [
+  "NativeWind and Tailwind CSS compatibility:",
+  "- Use nativewind@2.0.11 with tailwindcss@3.3.2.",
+  "- Higher versions may cause 'process(css).then(cb)' errors.",
+  "- If errors occur, remove both packages and reinstall specific versions:",
+  "  npm remove nativewind tailwindcss",
+  "  npm install nativewind@2.0.11 tailwindcss@3.3.2",
+
+  "Babel configuration for NativeWind:",
+  "- Include 'nativewind/babel' in the plugins array.",
+  "- Avoid using jsxImportSource in presets.",
+  "- Ensure 'react-native-reanimated/plugin' follows 'nativewind/babel'."
+];
+
+// Additional Instructions
+
+const additionalInstructions = [
+  "Use PowerShell for terminal commands.",
+  "Before installing a new package, check if it's already installed:",
+  "  Get-ChildItem -Recurse -Filter package-name",
+  "If installed, upgrade using:",
+  "  expo upgrade <package-name>",
+  "or",
+  "  npm install <package-name>",
+  "if not supported by Expo.",
+  "Use PowerShell commands to manage the project, e.g., moving and renaming files:",
+  "  Move-Item -Path .\\old\\path\\file.txt -Destination .\\new\\path\\newname.txt",
+  "If unsure about the current structure or details, use PowerShell to list out necessary information:",
+  "  Get-ChildItem -Recurse",
+  "Utilize official Expo libraries and upgrade them using Expo's commands.",
+  "Avoid deleting existing functionality or files without a valid reason.",
+  "Follow the recommended folder structure and maintain organized code for scalability and readability.",
+  "Implement navigation using Expo Router for clean and declarative routing."
+];
+
+// ---- End rules from react-native-expo-router-typescript-windows-cursorrules-prompt-file.mdc ----
+
+
+// ---- Begin rules from react-query-cursorrules-prompt-file.mdc ----
+
+// React + React Query .cursorrules
+
+// Prefer functional components with hooks
+
+const preferFunctionalComponents = true;
+
+// React Query best practices
+
+const reactQueryBestPractices = [
+  "Use QueryClient and QueryClientProvider at the root of your app",
+  "Implement custom hooks for queries and mutations",
+  "Utilize query keys for effective caching",
+  "Use prefetching for improved performance",
+  "Implement proper error and loading states",
+];
+
+// Folder structure
+
+const folderStructure = `
+src/
+  components/
+  hooks/
+    useQueries/
+    useMutations/
+  pages/
+  utils/
+  api/
+`;
+
+// Additional instructions
+
+const additionalInstructions = `
+1. Use TypeScript for type safety with React Query
+2. Implement proper error boundaries for query errors
+3. Utilize React Query DevTools for debugging
+4. Use stale-while-revalidate strategy for data freshness
+5. Implement optimistic updates for mutations
+6. Use query invalidation for data refetching
+7. Follow React Query naming conventions for consistency
+`;
+
+// ---- End rules from react-query-cursorrules-prompt-file.mdc ----
+
+
+// ---- Begin rules from typescript-expo-jest-detox-cursorrules-prompt-file.mdc ----
+
+You are an expert in TypeScript, React Native, Expo, and Mobile UI development.
+
+Code Style and Structure
+
+Naming Conventions
+TypeScript Usage
+Syntax and Formatting
+UI and Styling
+Safe Area Management
+Performance Optimization
+Navigation
+State Management
+Error Handling and Validation
+Testing
+Security
+Internationalization (i18n)
+
+Key Conventions
+
+API Documentation
+
+
+Refer to Expo's documentation for detailed information on Views, Blueprints, and Extensions for best practices.
+
+// ---- End rules from typescript-expo-jest-detox-cursorrules-prompt-file.mdc ----
+
+
+// ---- Begin rules from typescript-react-nextui-supabase-cursorrules-promp.mdc ----
+
+# Codebase Overview
+
+This codebase appears to be part of a web application built using TypeScript, React, and various NextUI components. It is structured to support a landing page, authentication flows, and a dashboard for logged-in users. The application integrates with Supabase for backend services, including authentication and database interactions.
+
+# Stack and Key Technologies
+
+Frontend Framework: React
+TypeScript: Used for type-safe code across the frontend.
+NextUI: A React UI library used for building the UI components like buttons, modals, inputs, etc.
+Supabase: An open-source Firebase alternative used for backend services like authentication, database, and storage.
+Next.js: Likely used as the React framework, indicated by the usage of next/navigation and server utilities.
+Iconify: For icons across the application.
+
+Purpose and Functionality
+
+## Authentication
+
+The application includes a comprehensive authentication flow:
+Login: Users can log in using email/password or GitHub OAuth. The login logic is handled in frontend/app/(landing-page)/login/action.ts.
+Signup: New users can sign up with an email and password. The signup logic is also in frontend/app/(landing-page)/login/action.ts.
+Logout: Users can log out, with the logic located in frontend/app/(landing-page)/logout/action.ts.
+Email Confirmation: The application handles email confirmation through a callback route in frontend/app/auth/callback/confirm/route.ts.
+
+## User Interface
+
+Landing Page: Contains components like SubmitButton, LoginPage, and LogoutModal to facilitate user interactions.
+Dashboard: For logged-in users, showing personalized content and a sidebar for navigation within the dashboard.
+Error Handling: A generic error component is used to display errors and provide a retry mechanism.
+
+## Navigation and Layout
+
+Navbar: A responsive navbar for the landing page and possibly other public pages.
+Sidebar: A collapsible sidebar for the dashboard, indicating a more complex, multi-page application structure for authenticated users.
+
+// ---- End rules from typescript-react-nextui-supabase-cursorrules-promp.mdc ----
+
