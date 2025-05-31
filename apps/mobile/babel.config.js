@@ -3,13 +3,8 @@ module.exports = function (api) {
     return {
       presets: ['babel-preset-expo'],
       plugins: [
-        'expo-router/babel',
-        [
-          'transform-inline-environment-variables',
-          {
-            include: ['TAMAGUI_TARGET', 'EXPO_ROUTER_APP_ROOT'],
-          },
-        ],
+        'transform-inline-environment-variables',
+        'react-native-reanimated/plugin',
         [
           '@tamagui/babel-plugin',
           {
@@ -17,7 +12,6 @@ module.exports = function (api) {
             config: './tamagui.config.ts',
           },
         ],
-        'react-native-reanimated/plugin',
       ],
     };
   };

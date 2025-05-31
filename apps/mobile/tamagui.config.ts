@@ -8,8 +8,11 @@ const headingFont = createInterFont({
     6: 15,
     7: 18,
     8: 22,
-    9: 32,
-    10: 44,
+    9: 28,
+    10: 34,
+    12: 48,
+    14: 56,
+    15: 64,
   },
   transform: {
     6: 'uppercase',
