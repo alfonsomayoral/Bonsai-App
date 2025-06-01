@@ -11,4 +11,5 @@ passlib[bcrypt]==1.7.4  # For password hashing
 python-multipart==0.0.9  # For form data
 alembic==1.13.1  # For database migrations
 pytest==8.0.0  # For testing
-httpx==0.27.0  # For async HTTP requests 
+httpx==0.27.0  # For async HTTP requests
+supabase==2.3.4  # Supabase client 

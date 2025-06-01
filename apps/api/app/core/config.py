@@ -1,35 +1,29 @@
 """
-Configuration settings for the Bonsai API.
+Configuration module for the application.
+This module handles all environment variables and configuration settings.
 """
 from pydantic_settings import BaseSettings
-from functools import lru_cache
-import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
+from typing import Optional
 
 class Settings(BaseSettings):
     """Application settings."""
     
     # API Settings
-    API_HOST: str = os.getenv("API_HOST", "0.0.0.0")
-    API_PORT: int = int(os.getenv("API_PORT", "8000"))
-    DEBUG: bool = os.getenv("DEBUG", "True").lower() == "true"
+    API_V1_STR: str = "/api/v1"
+    PROJECT_NAME: str = "Bonsai API"
     
     # Database Settings
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://user:password@localhost:5432/bonsai_db")
+    DATABASE_URL: str
     
-    # Security Settings
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "your-secret-key-here")
-    ALGORITHM: str = os.getenv("ALGORITHM", "HS256")
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+    # Supabase Settings
+    SUPABASE_URL: str
+    SUPABASE_KEY: str
+    
+    # CORS Settings
+    BACKEND_CORS_ORIGINS: list[str] = ["*"]
     
     class Config:
-        """Pydantic config."""
+        env_file = ".env"
         case_sensitive = True
 
-@lru_cache()
-def get_settings() -> Settings:
-    """Get cached settings instance."""
-    return Settings() 
+settings = Settings() 
