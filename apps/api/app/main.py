@@ -1,28 +1,42 @@
+"""
+Main application module.
+"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from .core.config import settings
+from .api.v1 import auth, subscriptions
 
 app = FastAPI(
-    title="Bonsai API",
-    description="API for Bonsai fitness and nutrition tracking application",
-    version="1.0.0"
+    title=settings.PROJECT_NAME,
+    openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
+    allow_origins=settings.BACKEND_CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# Include routers
+app.include_router(
+    auth.router,
+    prefix=f"{settings.API_V1_STR}/auth",
+    tags=["auth"]
+)
+
+app.include_router(
+    subscriptions.router,
+    prefix=f"{settings.API_V1_STR}/subscriptions",
+    tags=["subscriptions"]
+)
+
 @app.get("/")
 async def root():
-    return {
-        "message": "Welcome to Bonsai API",
-        "version": "1.0.0",
-        "status": "operational"
-    }
+    """Root endpoint."""
+    return {"message": f"Welcome to {settings.PROJECT_NAME}"}
 
 @app.get("/health")
 async def health_check():
