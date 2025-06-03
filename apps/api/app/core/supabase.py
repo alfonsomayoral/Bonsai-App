@@ -4,6 +4,8 @@ This module handles the Supabase client configuration and initialization.
 """
 from supabase import create_client, Client
 from .config import settings
+from postgrest.base_request_builder import APIResponse
+from fastapi import HTTPException, status
 
 # Initialize Supabase client
 supabase: Client = create_client(
@@ -31,7 +33,10 @@ async def get_user_by_id(user_id: str):
     Returns:
         dict: User details
     """
-    response = await supabase.from_('users').select('*').eq('id', user_id).single()
+    response: APIResponse = await supabase.from_('users').select('*').eq('id', user_id).single()
+    if response.error:
+         # Consider logging or raising an exception based on your needs
+         print(f"Error fetching user {user_id}: {response.error}")
     return response.data
 
 async def create_user_profile(user_id: str, email: str, full_name: str, unit_system: str = "metric", goal_type: str = "maintain"):
@@ -47,6 +52,9 @@ async def create_user_profile(user_id: str, email: str, full_name: str, unit_sys
         
     Returns:
         dict: Created user profile
+        
+    Raises:
+        HTTPException: If user profile creation fails
     """
     user_data = {
         'id': user_id,
@@ -63,5 +71,24 @@ async def create_user_profile(user_id: str, email: str, full_name: str, unit_sys
         'last_payment_amount': None,
         'payment_history': []
     }
-    response = await supabase.from_('users').insert(user_data).execute()
-    return response.data[0] if response.data else None 
+    
+    response: APIResponse = await supabase.from_('users').insert(user_data).execute()
+    
+    if response.error:
+        # If Supabase returns an error during insertion, raise an HTTPException
+        # This will give a more specific error message in the API response
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, # Keep 500 as it's a backend issue
+            detail=f"Database error creating user profile: {response.error.message} (Code: {response.error.code})"
+        )
+
+    # Check if data was returned (successful insert usually returns data)
+    if not response.data:
+         # This might happen if no error is reported but no data is returned on insert
+         raise HTTPException(
+             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+             detail="Database error creating user profile: No data returned on insert"
+         )
+
+    # Return the first item from the returned data (should be the inserted row)
+    return response.data[0] 
