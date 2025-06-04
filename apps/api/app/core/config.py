@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     # Supabase Settings
     SUPABASE_URL: str
     SUPABASE_KEY: str
+    SUPABASE_SERVICE_KEY: str
     
     # CORS Settings
     BACKEND_CORS_ORIGINS: list[str] = ["*"]

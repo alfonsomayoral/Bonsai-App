@@ -1,4 +1,23 @@
--- Enable Row Level Security
+-- Primero, eliminar todas las políticas existentes
+DROP POLICY IF EXISTS "Users can view their own data" ON users;
+DROP POLICY IF EXISTS "Users can update their own data" ON users;
+DROP POLICY IF EXISTS "Allow service role to insert users" ON users;
+DROP POLICY IF EXISTS "Users can view their own meals" ON meals;
+DROP POLICY IF EXISTS "Users can insert their own meals" ON meals;
+DROP POLICY IF EXISTS "Users can update their own meals" ON meals;
+DROP POLICY IF EXISTS "Users can delete their own meals" ON meals;
+DROP POLICY IF EXISTS "Anyone can view exercises" ON exercises;
+DROP POLICY IF EXISTS "Only authenticated users can insert exercises" ON exercises;
+DROP POLICY IF EXISTS "Users can view their own workout sessions" ON workout_sessions;
+DROP POLICY IF EXISTS "Users can insert their own workout sessions" ON workout_sessions;
+DROP POLICY IF EXISTS "Users can update their own workout sessions" ON workout_sessions;
+DROP POLICY IF EXISTS "Users can delete their own workout sessions" ON workout_sessions;
+DROP POLICY IF EXISTS "Users can view their own session exercises" ON session_exercises;
+DROP POLICY IF EXISTS "Users can insert their own session exercises" ON session_exercises;
+DROP POLICY IF EXISTS "Users can view their own exercise sets" ON exercise_sets;
+DROP POLICY IF EXISTS "Users can insert their own exercise sets" ON exercise_sets;
+
+-- Asegurarse de que RLS está habilitado en todas las tablas
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE meals ENABLE ROW LEVEL SECURITY;
 ALTER TABLE exercises ENABLE ROW LEVEL SECURITY;
@@ -14,6 +33,10 @@ CREATE POLICY "Users can view their own data"
 CREATE POLICY "Users can update their own data"
     ON users FOR UPDATE
     USING (auth.uid() = id);
+
+CREATE POLICY "Allow service role to insert users"
+    ON users FOR INSERT
+    WITH CHECK (auth.role() = 'service_role');
 
 -- Meals policies
 CREATE POLICY "Users can view their own meals"
@@ -92,4 +115,4 @@ CREATE POLICY "Users can insert their own exercise sets"
         JOIN workout_sessions ON workout_sessions.id = session_exercises.session_id
         WHERE session_exercises.id = exercise_sets.session_exercise_id
         AND workout_sessions.user_id = auth.uid()
-    )); 
+    ));
