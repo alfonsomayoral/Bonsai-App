@@ -8474,7 +8474,7 @@ packages:
     peerDependencies:
       react-native: '*'
     dependencies:
-      react-native: 0.79.4(@babel/core@7.27.4)(@types/react@19.0.14)(react@19.0.0)
+      react-native: 0.79.4(@babel/core@7.27.4)(react@19.0.0)
       whatwg-url-without-unicode: 8.0.0-3
     dev: false
 
