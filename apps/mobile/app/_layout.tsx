@@ -27,7 +27,7 @@ export default function RootLayout() {
         }
         // If onboarding is complete and currently in onboarding flow
         else if (isOnboardingComplete && inOnboardingFlow) {
-            router.replace('/(tabs)/home'); // Redirect to main app
+            router.replace('/(tabs)'); // Redirect to main app (index)
         }
         // Otherwise, remain on the current screen (either within tabs or already in onboarding)
       }

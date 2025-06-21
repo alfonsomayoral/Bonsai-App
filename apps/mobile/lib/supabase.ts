@@ -1,7 +1,20 @@
+import 'react-native-url-polyfill/auto';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
 
-// Ensure these environment variables are set in your .env or app.json
-const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl  = process.env.EXPO_PUBLIC_SUPABASE_URL!;
+const supabaseAnon = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseAnon, {
+  // 🚫 Realtime off — evita que supabase-js intente usar WebSocket/ws
+  realtime: { enabled: false } as any,
+
+  auth: {
+    storage: AsyncStorage,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false,
+  },
+
+  global: { headers: { 'X-Client-Info': 'bonsai-mobile-app' } },
+});

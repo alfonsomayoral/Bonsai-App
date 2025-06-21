@@ -9,6 +9,9 @@ dist/
 web-build/
 expo-env.d.ts
 
+# EAS Build
+.easignore
+
 # Native
 .kotlin/
 *.orig.*
@@ -32,6 +35,11 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env
 
 # typescript
 *.tsbuildinfo
+
+# Development Build
+android/
+ios/

@@ -35,7 +35,7 @@ export default function UnitSystemScreen() {
         } else {
           console.log('User profile updated:', data);
           // Redirect to main app
-          router.replace('/(tabs)/home'); // Use replace to prevent going back to onboarding
+          router.replace('/(tabs)'); // Use replace to prevent going back to onboarding
         }
       } else {
         console.error('User not logged in or session expired.');
