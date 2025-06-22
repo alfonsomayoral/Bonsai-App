@@ -1,17 +1,14 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "strict": true,
+    "jsx": "react-native",
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "types": [
-      "react",
-      "react-native"
-    ]
+      "@/*": ["./*"]
+    }
+    // NO pongas "noEmit" aquí
+    // Puedes dejar "types": ["expo", "expo-router/types", "react"] si lo necesitas, pero NO "react-native"
   },
   "include": [
     "**/*.ts",

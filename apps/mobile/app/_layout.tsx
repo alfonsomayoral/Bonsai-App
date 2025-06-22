@@ -1,6 +1,6 @@
 import { Stack, useRouter, useSegments } from 'expo-router'
-import { TamaguiProvider, Text } from 'tamagui'
-import config from 'tamagui.config'       // ← alias global, ya definido en tsconfig + Metro
+import { TamaguiProvider, Text, Theme } from 'tamagui'
+import config from '../tamagui.config.js'       // ← alias global, ya definido en tsconfig + Metro
 import { useAuth } from '../hooks/useAuth'
 import { useEffect } from 'react'
 
@@ -35,10 +35,12 @@ export default function RootLayout() {
 
   return (
     <TamaguiProvider config={config} defaultTheme="light">
-      <Stack>
-        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)"     options={{ headerShown: false }} />
-      </Stack>
+      <Theme name="light">
+        <Stack>
+          <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)"     options={{ headerShown: false }} />
+        </Stack>
+      </Theme>
     </TamaguiProvider>
   )
 }

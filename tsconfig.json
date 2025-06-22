@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "target": "ES2022",
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "jsx": "react-native",
+      "resolveJsonModule": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "noEmit": true,
+      "allowJs": true,
+      "baseUrl": ".",
+      "paths": {
+        "tamagui.config": ["apps/mobile/tamagui.config.js"]
+      }
+      // NO pongas "types" aquí
+      // NO pongas "noEmit" aquí si usas referencias
+    },
+    "exclude": [
+      "node_modules",
+      "**/dist",
+      "**/build"
+    ]
+  }
